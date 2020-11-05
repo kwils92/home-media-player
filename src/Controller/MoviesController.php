@@ -6,6 +6,7 @@ use App\Entity\Movies;
 use App\Form\MoviesType;
 use App\Repository\MoviesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,8 +54,19 @@ class MoviesController extends AbstractController
      */
     public function show(Movies $movie): Response
     {
+        $movieTitle = $movie->getTitle();
+        $client = HttpClient::create();
+
+        $apitest = $client->request(
+            'GET',
+            "http://www.omdbapi.com/?apikey=25302863&t={$movieTitle}"
+        );
+
+        $content = $apitest->toArray();
+
         return $this->render('movies/show.html.twig', [
             'movie' => $movie,
+            'movie_details' => $content, 
         ]);
     }
 
