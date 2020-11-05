@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ShowEpisodes{% endblock %}
+
+{% block body %}
+
+    {% include 'modules/nav.html.twig' %}
+
+    <h1>Edit ShowEpisodes</h1>
+
+    {{ include('show_episodes/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('show_episodes_index') }}">back to list</a>
+
+    {{ include('show_episodes/_delete_form.html.twig') }}
+    
+{% endblock %}

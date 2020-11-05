@@ -1,0 +1,17 @@
+{# This component takes in an array of videos (either movies or shows) and converts their numeric 
+   rating to a star rating #}
+
+{% set rating = video.rating %}
+{% set videoId = video.id %}
+
+<div class="c-player-rating m-align-c">
+    {% if rating == 0 %}
+        <a href="{{ path('movies_rate', {'id': videoId}) }}" class="c-rate-link m-align-c m-remove-underline">Not yet rated</a>
+    {% else %}
+        {% for i in 1..rating %}
+            <i class="fas fa-star c-star m-align-c"></i> 
+        {% endfor %}
+
+        <a href="{{ path('movies_rate', {'id': videoId}) }}" class="c-rate-link m-align-c m-remove-underline">Rate this show</a>
+    {% endif %}
+</div>

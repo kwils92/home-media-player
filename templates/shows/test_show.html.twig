@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shows{% endblock %}
+
+{% block body %}
+    {% include 'modules/nav.html.twig' %}
+
+    <h1 class="c-show-title" >{{ show.title|replace({'_': ' '}) }}</h1>
+    
+    {% set prevSeason = null %}
+
+    <div class="c-season-container">
+
+        {% for ep2 in episodes %}
+            {% if ep2.season != prevSeason %}
+
+                <div class="sub-season season-{{ ep2.season }}">
+                    <ul class="c-episode-list">
+                        <li class="c-season-list__header"> Season {{ ep2.season }} </li>
+
+                        {% for ep in episodes %}
+                            {% if ep.season == ep2.season %}
+
+                                <li class="c-episode-list__title" id="episode-{{ ep.id }}">
+                                    <a href="{{ path('show_episodes_show', {'id': ep.id}) }}" class="c-episode-list__link m-remove-underline"> 
+                                
+                                        {{ ep.title|length > 22 ? ep.title|slice(0, 20)|replace({'_': ' '}) ~ '...' : ep.title|replace({'_': ' '}) }}
+                                        
+                                        <span class="c-episode-list__epi-info"> S{{ep.season}}E{{ep.episode}} </span> 
+
+                                        <span class="c-episode-list__epi-info"> 
+
+                                            {% if ep.rating == 0 %}
+
+                                                <i class="fas fa-star no-rating-star"></i>
+
+                                            {% else %}
+                                                {% for i in 1..ep.rating %}
+
+                                                    <i class="fas fa-star c-star m-align-c"></i> 
+
+                                                {% endfor %}
+                                            {% endif %}
+
+                                        </span>
+                                    </a>
+                                </li>
+
+                            {% endif %}
+                        {% endfor %}
+
+                        {% set prevSeason = ep2.season %}
+
+                    </ul>
+                </div>
+
+            {% endif %}
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+
+

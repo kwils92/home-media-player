@@ -1,0 +1,256 @@
+:root{
+    /* colours */
+    /* --first-color: rgb(151, 63, 151);
+    --second-color: cornflowerblue; 
+    --third-color: rgb(219, 146, 183); */
+
+    /* --first-color: rgb(44, 43, 43);
+    --second-color: rgb(15,25,25);
+    --third-color: rgb(70, 138, 138); */
+
+    --first-color: rgb(255, 255, 255);
+    --second-color: rgb(15,25,25);
+    --third-color: rgb(70, 138, 138);
+    
+    /* fonts */
+    --main-font: "Candara Regular", sans-serif;
+}
+
+.add-btn{
+    color: white;
+    font-size: 1.25em;
+}
+
+body{
+    background-color: var(--second-color);
+    font-family: var(--main-font); 
+    margin: 0;
+    text-decoration: none;
+}
+
+.detail-fade{
+    font-size: 0.5em;
+    margin: 0;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.episode-title{
+    color: var(--first-color);
+    font-family: var(--main-font);
+    font-size: 5em;
+    margin: 1em 0 0 0.25em;
+    text-align: center;
+}
+
+.episode-title--list{
+    color: var(--first-color);
+    display: fixed;
+    margin: 0 0 0.25em 0;
+    text-decoration: none;
+}
+
+.episode-list{
+    list-style-type: none;
+}
+
+.episode-title--list:hover{
+    border-color: transparent;
+}
+
+.episode-season{
+    color: var(--third-color);
+    font-family: var(--main-font);
+    font-size: 2em;
+    margin: 0 0 1em 0;
+    text-align: center;
+}
+
+.icon-custom{
+    color: var(--third-color);
+}
+
+.icon-custom--top-nav{
+    color: white;
+    margin: 0 0.3em 0 0;
+}
+
+.hidden-li{
+    visibility: hidden;
+}
+
+.main-card{
+    margin-top: 1em;
+}
+
+.main-header{
+    font-size: 4em;
+}
+
+.main-icon{
+    font-size: 12em !important;
+}
+
+.main-nav{
+    background-color: var(--second-color);
+    height: 10em;
+    line-height: 10em;
+}
+
+.main-page{
+    color: var(--second-color);
+    margin-top: 50%;
+    text-align: center;
+}
+
+#nav-logo{
+    font-size: 5em;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 1em 0 1em;
+}
+
+.nav-option{
+    margin: 0 1em 0 0;
+    text-decoration: none;
+}
+
+.nav-option__main-page{
+    color: var(--third-color);
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.nav-option--top-nav{
+    color: white;
+    font-size: 1.75em;
+    margin: 0 0 0 2.5em;
+}
+
+.nav-option--top-nav:visited{
+    color: white;
+}
+
+.nav-text{
+    display: none;
+}
+
+.nav-text-episode{
+    display: inline;
+}
+
+.no-underline{
+    text-decoration: none;
+}
+
+.rating-div{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.rate-link{
+    color: var(--third-color);
+    display: block;
+    padding: 1em;
+}
+
+.request-tbl{
+    color: white;
+    margin: 0 0 2em 0;
+    text-align: center;
+    white-space: nowrap;
+    width: 95%;
+}
+
+.season-hdr{
+    color: var(--third-color);
+    font-size: 0.65em;
+    font-style: italic;
+    padding: 1em;
+}    
+
+.show-list{
+    font-size: 2.5em;
+    margin: 1em 0 0 15%;
+    text-align: center;
+    width: 70%;
+}
+
+.show-title{
+    color: var(--first-color);
+    font-family: cursive;
+    font-size: 5em;
+    text-align: center;
+}
+
+.show-title__small{
+    color: var(--third-color);
+    text-decoration: none;
+}
+
+.show-title__small:visited{
+    color: var(--first-color);
+}
+
+.star-custom{
+    color: gold;
+    padding-left: 1em;
+}
+
+.no-rating-star{
+    color: grey;
+    padding-left: 1em;
+}
+
+.video-container{
+    margin: 0 1em 0 1em;
+}
+
+@keyframes anim-underline{
+    0% {border-bottom: 1px solid var(--first-color);}
+    100% {border-bottom: 1px solid var(--first-color);}
+}
+
+@media screen and (max-width: 600px){
+    .nav-text{
+        display: none;
+    }
+
+    .nav-text-episode{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 780px){
+    .episode-title--list{
+        font-size: 1.5em;
+    }
+
+    .main-nav{
+        background-color: var(--second-color);
+        height: 3em;
+        line-height: 3em;
+    }
+    
+    .main-page{
+        margin-top: 10%;
+    }
+    
+    .nav-option--top-nav{
+        font-size: 1em;
+    }
+
+    .nav-text{
+        display: inline;
+    }
+
+    .season-container{
+        height: 100%;
+        background-color: rgb(39, 59, 59);
+        display: grid; 
+        grid-gap: 5%;
+        row-gap: 2%;
+        grid-template-columns: 30% 30% 30%;
+        grid-template-rows: auto auto auto;
+    }
+}
+

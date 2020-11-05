@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Request{% endblock %}
+
+{% block body %}
+
+    {% include 'modules/nav.html.twig' %}
+    
+    <h1 class="c-player-title m-align-c">Make a new Request</h1>
+
+    {{ include('tickets/_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,34 @@
+{# This component receives an array of videos (either shows or movies; it's agnostic) and sorts them alphabetically.
+   It also receives the "path_name", which is a string with the route name (either movies_show or shows_show) #}
+
+{% set prevIntial = null %}
+
+<div class="l-show-list"> 
+    {% for video in videos %}
+        {% set video_id = video.id %}
+        {% set video_title = video.title %}
+
+
+        {% if (video_title|first|upper != prevIntial) %}
+
+            <p class="c-title-header"> {{ video_title|first|upper }} </p>
+
+        {% endif %}
+
+        <div class="l-show-card" id="js-card-title-{{ video_id }}">
+            <a href="{{ path( path_name , { 'id': video_id }) }}" class="c-show-card__title"  onmouseover="getMediaDetails('{{ video_title }}', {{ video_id }})">
+                {{ video_title|replace({ '_': ' ' }) }} 
+            </a>
+            <div id="js-show-desc-{{ video_id }}" class="js-show-desc m-hide-mobile"></div>      
+        </div>
+
+        {% set prevIntial = video_title|first|upper %}
+
+    {% else %}
+
+        <div class="c-show-card__title">
+            <p>no records found</p>
+        </div>
+
+    {% endfor %}
+</div>

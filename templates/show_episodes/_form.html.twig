@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+    
+    {{ form_widget(form.rating, {
+            'attr': {'class': 'c-rate-btn m-align-c'}
+        }) 
+    }}
+
+    <button class="c-button"> {{ button_label|default('Save') }} </button>
+
+{{ form_end(form) }}

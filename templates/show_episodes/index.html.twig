@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ShowEpisodes index{% endblock %}
+
+{% block body %}
+    {% include 'modules/nav.html.twig' with { 'show_id': show_episodes[0].showTitle } %}
+    
+    <table class="show-list">
+        <tbody>
+            {% set prevEpisode = null %}
+
+            {% for ep in show_episodes %}
+                {% if (ep.season != prevEpisode) %}
+
+                <tr>
+                    <th> 
+                        Season {{ ep.season }} 
+                    </th>
+                </tr>   
+
+                {% endif %}
+
+                <tr>
+                    <td>
+                        <a href="{{ path('show_episodes_show', {'id': ep.id}) }}" class="show-title__small">{{ ep.title|replace( {'_': ' '} ) }} </a>
+                    </td>
+                </tr>
+
+                {% set prevEpisode = ep.season %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('shows_index') }}">back to list</a>
+
+    <a href="{{ path('shows_edit', {'id': show.id}) }}">edit</a> #}
+
+    {# {{ include('shows/_delete_form.html.twig') }} #}
+{% endblock %}

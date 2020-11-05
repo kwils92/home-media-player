@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Movies Index {% endblock %}
+
+{% block body %}
+
+    {% include 'modules/nav.html.twig' %}
+
+    {% include 'modules/alpha_title_sorter.html.twig' with { 'videos': movies, 'path_name': 'movies_show' } %}
+
+{% endblock %}

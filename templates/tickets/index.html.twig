@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tickets index{% endblock %}
+
+{% block body %}
+    {% include 'modules/nav.html.twig' %}
+
+        <a href="{{ path('tickets_new') }}" class="c-add-req__link m-remove-underline">
+            <div class="c-button m-add-req m-align-c"> 
+                <i class="fas fa-cart-plus"></i> New Request
+            </div>
+        </a>
+    
+    <table class="c-table">
+        <thead class="c-table__header">
+            <tr>
+                <th>Request</th>
+                <th>Outcome</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.request }}</td>
+                <td>{{ ticket.outcome }}</td>
+                <td class="m-align-c"><a href="{{ path('tickets_edit', {'idtickets': ticket.idtickets}) }}" class="m-remove-underline">Edit</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+    <div class="c-form-row">
+        {{ form_label(form.request, 'Request Name', {
+                'label_attr': {'class': 'c-form__label'}
+            }) 
+        }}
+
+        {{ form_widget(form.request, {
+                'attr': {'class': 'c-form__field'}
+            }) 
+        }}
+    </div>
+
+    <div class="c-form-row">
+        {{ form_label(form.outcome, null, {
+                'label_attr': {'class': 'c-form__label'}
+            }) 
+        }}
+
+        {{ form_widget(form.outcome, {
+                'attr': {'class': 'c-form__field'}
+                
+            }) 
+        }}
+    </div>
+
+    <div class="m-align-c">
+        <button class="c-button">
+            {{ button_label|default('Save') }}
+        </button>
+    </div>
+
+{{ form_end(form) }}

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shows index{% endblock %}
+
+{% block body %}
+    {% include 'modules/nav.html.twig' %}
+
+    {% include 'modules/alpha_title_sorter.html.twig' with { 'videos': shows, 'path_name': 'shows_show' } %}
+{% endblock %}

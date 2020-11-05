@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Tickets{% endblock %}
+
+{% block body %}
+
+    {% include 'modules/nav.html.twig' %}
+
+    <h1 class="c-player-title m-align-c">Edit Tickets</h1>
+
+    {{ include('tickets/_edit_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

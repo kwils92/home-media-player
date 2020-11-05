@@ -1,0 +1,21 @@
+<nav class="c-nav">
+    {# TICKETS #}
+    <a href="{{ path('tickets_index') }}" class="c-nav__option"> 
+        <i class="fas fa-vote-yea c-nav__icon"></i> 
+        <span class="m-hide-nav-mobile">Requests</span>
+    </a>
+
+    {# SHOWS #}
+    <a href="{{ path('shows_index') }}" class="c-nav__option">
+        <i class="fas fa-tv c-nav__icon"></i> 
+       <span class="m-hide-nav-mobile"> Shows</span>
+    </a>
+    
+    {# MOVIES #}
+    <a href="{{ path('movies_index') }}" class="c-nav__option">
+        <i class="fas fa-film c-nav__icon"></i> 
+        <span class="m-hide-nav-mobile">Movies</span>
+    </a>
+</nav>
+
+<p class="c-theme-switch" id="theme-switch" onclick="changeTheme()">Enable Light Theme</p>

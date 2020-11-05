@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}movie{% endblock %}
+
+{% block body %}
+    {% include 'modules/nav.html.twig' %}
+
+    <h1 class="c-player-title m-align-c">{{ movie.title|replace({ '_': ' ' }) }}</h1>
+
+    <div class="c-player-rating m-align-c">
+        {% if movie.rating == 0 %}
+            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-align-c m-remove-underline">Not yet rated</a>
+        {% else %}
+            {% for i in 1..movie.rating %}
+                <i class="fas fa-star c-star m-align-c"></i> 
+            {% endfor %}
+
+            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-align-c m-remove-underline">Rate this show</a>
+        {% endif %}
+    </div>
+
+    {% include 'modules/video_player.html.twig' with { 'filepath': movie.filepath } %}
+
+{% endblock %}
