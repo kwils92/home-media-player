@@ -55,14 +55,17 @@ class MoviesController extends AbstractController
     public function show(Movies $movie): Response
     {
         $movieTitle = $movie->getTitle();
+        $apiKey = $_ENV['API_KEY'];
         $client = HttpClient::create();
 
-        $apitest = $client->request(
-            'GET',
-            "http://www.omdbapi.com/?apikey=25302863&t={$movieTitle}"
-        );
+        // $apitest = $client->request(
+        //     'GET',
+        //     "http://www.omdbapi.com/?apikey={$apiKey}&t={$movieTitle}"
+        // );
 
-        $content = $apitest->toArray();
+        // $content = $apitest->toArray();
+
+        $content = array("Year" => "2014", "Director" => "Wes Bays or something like that", "Title" => "Maze Runner", "Plot2" => "The guy goes to the store and it's like, cold, but not too cold, so he didn't bring a jacket. Then--snows. Straight up. No seriously. It does, dude seriously. Then he gets way too cold, so on the way home its just awful. For like 15 minutes--walking--his face is cold, and his nose hurts, and he didn't even bring boots so the icy water is soaking into his socks. At least when he gets home, however, its nice and warm though.", "Rated" => "PG-13", "Genre" => "Romance, Crime, Drama");
 
         return $this->render('movies/show.html.twig', [
             'movie' => $movie,

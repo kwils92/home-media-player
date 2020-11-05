@@ -5,19 +5,28 @@
 {% block body %}
     {% include 'modules/nav.html.twig' %}
 
-    <h1 class="c-player-title m-align-c">{{ movie.title|replace({ '_': ' ' }) }}</h1>
+    {% include 'modules/video_player.html.twig' with { 'filepath': movie.filepath } %}
 
-    <div class="c-player-rating m-align-c">
+    
+    <h1 class="c-player-title">{{ movie.title|replace({ '_': ' ' }) }}</h1>
+
+    {% dump(movie_details) %}
+
+    <div class="c-player-rating">
         {% if movie.rating == 0 %}
-            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-align-c m-remove-underline">Not yet rated</a>
+            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-remove-underline">Not yet rated</a>
         {% else %}
             {% for i in 1..movie.rating %}
                 <i class="fas fa-star c-star m-align-c"></i> 
             {% endfor %}
 
-            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-align-c m-remove-underline">Rate this show</a>
+            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-remove-underline">Rate this show</a>
         {% endif %}
     </div>
-
-    {% include 'modules/video_player.html.twig' with { 'filepath': movie.filepath } %}
+    
+    {# wrap these in a div #}
+    <p class="c-player__details--year">{{ movie_details.Year}}, {{ movie_details.Director }}</p>
+    <p class="c-player__details--rated">{{ movie_details.Rated }}</p>
+    <p class="c-player__details--genre">{{ movie_details.Genre }}</p>
+    <p class="c-player__details--plot">{{ movie_details.Plot2 }}</p>
 {% endblock %}
