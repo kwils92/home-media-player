@@ -14,7 +14,7 @@
 
     <div class="c-player-rating">
         {% if movie.rating == 0 %}
-            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-remove-underline">Not yet rated</a>
+            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-remove-underline">How would you rate this movie?</a>
         {% else %}
             {% for i in 1..movie.rating %}
                 <i class="fas fa-star c-star m-align-c"></i> 
@@ -24,9 +24,8 @@
         {% endif %}
     </div>
     
-    {# wrap these in a div #}
     <p class="c-player__details--year">{{ movie_details.Year}}, {{ movie_details.Director }}</p>
     <p class="c-player__details--rated">{{ movie_details.Rated }}</p>
     <p class="c-player__details--genre">{{ movie_details.Genre }}</p>
-    <p class="c-player__details--plot">{{ movie_details.Plot2 }}</p>
+    <p class="c-player__details--plot">{{ movie_details.Plot }}</p>
 {% endblock %}

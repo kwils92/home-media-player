@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MoviesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpClient\HttpClient;
 
 /**
  * @ORM\Entity(repositoryClass=MoviesRepository::class)
@@ -105,5 +106,23 @@ class Movies
         $this->format = $format;
 
         return $this;
+    }
+
+    /**
+     * This function retrieves movie details from the OMDBapi
+     * @String $movieTitle is the title of the movie passed in the from the controller 
+     * @return This method returns the movie details api data in an array 
+     */
+    public function getMovieDetails(): ?array
+    {
+        $apiKey = $_ENV['API_KEY'];
+        $client = HttpClient::create();
+
+        $response = $client->request(
+            'GET',
+            "http://www.omdbapi.com/?apikey={$apiKey}&t={$this->title}"
+        );
+
+        return $response->toArray();
     }
 }
