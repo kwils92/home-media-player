@@ -11,7 +11,7 @@
     <h1 class="c-player-title">{{ movie.title|replace({ '_': ' ' }) }}</h1>
 
     {% dump(movie_details) %}
-
+    
     <div class="c-player-rating">
         {% if movie.rating == 0 %}
             <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-remove-underline">How would you rate this movie?</a>
@@ -23,9 +23,12 @@
             <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="c-rate-link m-remove-underline">Rate this show</a>
         {% endif %}
     </div>
-    
-    <p class="c-player__details--year">{{ movie_details.Year}}, {{ movie_details.Director }}</p>
+
     <p class="c-player__details--rated">{{ movie_details.Rated }}</p>
-    <p class="c-player__details--genre">{{ movie_details.Genre }}</p>
+
+    <div class="c-player__details--genre-container">
+        {% include 'modules/genre_boxes.html.twig' with { 'genres': movie_details.Genre|split(',') } %}
+    </div>
+    
     <p class="c-player__details--plot">{{ movie_details.Plot }}</p>
 {% endblock %}

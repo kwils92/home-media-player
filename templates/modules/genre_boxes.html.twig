@@ -1,0 +1,8 @@
+{# Receives an array of movie genres and turns them into cute little 
+    boxes because the client said the details screen was "too boring." #}
+
+{% for genre in genres %}
+    <div class="c-player__details--genre-box">
+        {{ genre|upper  }}
+    </div>
+{% endfor %}
