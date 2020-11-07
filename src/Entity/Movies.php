@@ -110,8 +110,7 @@ class Movies
 
     /**
      * This function retrieves movie details from the OMDBapi
-     * @String $movieTitle is the title of the movie passed in the from the controller 
-     * @return This method returns the movie details api data in an array 
+     * @return $movieDetails Returns API response data as an array  
      */
     public function getMovieDetails(): ?array
     {
@@ -123,6 +122,12 @@ class Movies
             "http://www.omdbapi.com/?apikey={$apiKey}&t={$this->title}"
         );
 
-        return $response->toArray();
+        if(array_key_exists('Error', $response->toArray())){
+            $movieDetails = array('Plot' => "Unable to retrieve movie details from OMDBapi.", "Rated" => "No rating available", "Genre" => "Unavailable", "Year" => "Year unavailable");
+        } else {
+            $movieDetails = $response->toArray(); 
+        }
+
+        return $movieDetails;
     }
 }
