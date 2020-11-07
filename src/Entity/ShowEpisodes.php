@@ -81,6 +81,11 @@ class ShowEpisodes
      */
     private $showTitle;
 
+    /**
+     * @ORM\Column(type="string", length=5, nullable=true)
+     */
+    private $episodePart;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -178,6 +183,18 @@ class ShowEpisodes
     public function setShowTitle(?Shows $showTitle): self
     {
         $this->showTitle = $showTitle;
+
+        return $this;
+    }
+
+    public function getEpisodePart(): ?string
+    {
+        return $this->episodePart;
+    }
+
+    public function setEpisodePart(?string $episodePart): self
+    {
+        $this->episodePart = $episodePart;
 
         return $this;
     }
