@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}How did you like it?{% endblock %}
+
+{% block body %}
+    {% include 'modules/nav.html.twig' %}
+    
+    <h1 class="c-player-title m-align-c">How did you like it?</h1>
+
+    <div class="m-align-c">
+        {{ include('movies/_rate_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+{% endblock %}

@@ -12,12 +12,9 @@ class MoviesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('filepath')
-            ->add('rating')
-            ->add('category')
-            ->add('format')
-        ;
+            ->add('rating', null, array(
+                'attr' => array('min' => 0, 'max' => '5', 'autofocus' => null)
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
