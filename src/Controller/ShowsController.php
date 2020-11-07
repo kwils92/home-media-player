@@ -56,8 +56,9 @@ class ShowsController extends AbstractController
     {
         $episodes = $sepRepo->findBy(['showTitle' => $show->getId()], array('season' => 'ASC'));
 
-        return $this->render('shows/test_show.html.twig', [
+        return $this->render('shows/show.html.twig', [
             'show' => $show,
+            'show_details' => $show->getShowDetails(),
             'episodes' => $episodes,
         ]);
     }

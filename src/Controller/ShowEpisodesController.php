@@ -53,13 +53,13 @@ class ShowEpisodesController extends AbstractController
     /**
      * @Route("/{id}", name="show_episodes_show", methods={"GET"})
      */
-    public function show(ShowEpisodes $showEpisode, ShowsRepository $showsRepository): Response
+    public function show(ShowEpisodes $showEpisode): Response
     {
-        $show = $showsRepository->findBy(['id' => $showEpisode->getShowTitle()->getId()]);
+        $episodeDetails = $showEpisode->getEpisodeDetails();
         
         return $this->render('show_episodes/show.html.twig', [
             'show_episode' => $showEpisode,
-            'show' => $show,
+            'episode_details' => $episodeDetails,
         ]);
     }
 

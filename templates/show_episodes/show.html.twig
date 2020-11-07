@@ -7,22 +7,27 @@
 
     <a class="c-back-link m-remove-underline" href="{{ path('shows_show', {'id': show_episode.showTitle.id}) }}"><< Back to Episodes</a>
 
-    <h1 class="c-player-title m-align-c">{{ show_episode.title|replace({ '_': ' ' }) }}</h1>
-
-    <h2 class="c-player-season m-align-c">Season {{ show_episode.season }} Episode {{ show_episode.episode }} </h2>
-
-    <div class="c-player-rating m-align-c">
-        {% if show_episode.rating == 0 %}
-            <a href="{{ path('show_episodes_rate', {'id': show_episode.id}) }}" class="c-rate-link m-align-c m-remove-underline">Not yet rated</a>
-        {% else %}
-            {% for i in 1..show_episode.rating %}
-                <i class="fas fa-star c-star m-align-c"></i> 
-            {% endfor %}
-
-            <a href="{{ path('show_episodes_rate', {'id': show_episode.id}) }}" class="c-rate-link m-align-c m-remove-underline">Rate this show</a>
-        {% endif %}
-    </div>
-
     {% include 'modules/video_player.html.twig' with { 'filepath': show_episode.filepath } %}
 
+    <h1 class="c-player-title">{{ show_episode.title|replace({ '_': ' ' }) }}</h1>
+    
+    <a href="{{ path('show_episodes_rate', {'id': show_episode.id}) }}" class="m-remove-underline">
+        <div class="c-player-rating">
+            {% for ctr in 1..5 %}
+                {% if ctr <= show_episode.rating %}
+                    <i class="fas fa-star c-star m-align-c"></i> 
+                {% else %}
+                    <i class="far fa-star c-star m-align-c"></i> 
+                {% endif %}
+            {% endfor %}
+        </div>
+    </a>
+
+    <p class="c-player__details--rated">{{ episode_details.Rated}} |  {{ episode_details.Year }} | S{{ show_episode.season }}E{{ show_episode.episode }}{{ show_episode.episodePart }}</p>
+
+    <div class="c-player__details--genre-container">
+        {% include 'modules/genre_boxes.html.twig' with { 'genres': episode_details.Genre|split(',') } %}
+    </div>
+    
+    <p class="c-player__details--plot">{{ episode_details.Plot }}</p>
 {% endblock %}

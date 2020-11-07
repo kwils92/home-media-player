@@ -86,12 +86,23 @@ body{
             line-height: 1.5;
         }
 
+        .sub-season{
+            margin: 0 0 10% 0;
+        }
+
         .c-player__details--genre{
             color: grey;
             font-style: italic;
             font-size: 1em;
             margin: 0 0 0 2.5%;
-            
+        }
+
+        .c-show-genre--genre-container{
+            color: grey;
+            font-style: italic;
+            font-size: 1em;
+            text-align: center;
+            margin: 5% 0 3% 0;
         }
 
         .c-player__details--genre-box{
@@ -151,9 +162,16 @@ body{
             color: var(--text-brown);
             text-align: center;
         }
+
+        .c-show-plot{
+            font-size: 1.5em;
+            margin: 2% 5% 2% 5%;
+            line-height: 1.5;
+            color: grey;
+        }
         
         .c-season-list__header{
-            font-size: 0.5em;
+            font-size: 1em;
         }
         
         .c-episode-list__title{
@@ -258,7 +276,7 @@ body{
         }
 
         .c-episode-list__link{
-            font-size: 1.25em;
+            font-size: 2em;
             color: var(--text-blue);
         }      
         

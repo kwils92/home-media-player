@@ -6,7 +6,6 @@
     {% include 'modules/nav.html.twig' %}
 
     {% include 'modules/video_player.html.twig' with { 'filepath': movie.filepath } %}
-
     
     <h1 class="c-player-title">{{ movie.title|replace({ '_': ' ' }) }}</h1>
 
@@ -21,7 +20,6 @@
             {% endfor %}
         </div>
     </a>
-
     
     <p class="c-player__details--rated">{{ movie_details.Rated}} |  {{ movie_details.Year }}</p>
 

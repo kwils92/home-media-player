@@ -6,6 +6,12 @@
     {% include 'modules/nav.html.twig' %}
 
     <h1 class="c-show-title" >{{ show.title|replace({'_': ' '}) }}</h1>
+
+    <div class="c-show-genre--genre-container">
+        {% include 'modules/genre_boxes.html.twig' with { 'genres': show_details.Genre|split(',') } %}
+    </div>
+
+    <p class="c-show-plot">{{ show_details.Plot }}</p>
     
     {% set prevSeason = null %}
 
@@ -26,7 +32,7 @@
                                 
                                         {{ ep.title|length > 22 ? ep.title|slice(0, 20)|replace({'_': ' '}) ~ '...' : ep.title|replace({'_': ' '}) }}
                                         
-                                        <span class="c-episode-list__epi-info"> S{{ep.season}}E{{ep.episode}} </span> 
+                                        <span class="c-episode-list__epi-info"> S{{ep.season}}E{{ep.episode}}{{ep.episodePart}} </span> 
 
                                         <span class="c-episode-list__epi-info"> 
 

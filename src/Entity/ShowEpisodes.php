@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use PhpParser\Node\Expr\Cast\String_;
+use Symfony\Component\HttpClient\HttpClient;
 
 /**
  * ShowEpisodes
@@ -197,5 +198,29 @@ class ShowEpisodes
         $this->episodePart = $episodePart;
 
         return $this;
+    }
+
+    /**
+     * This function retrieves movie details from the OMDBapi
+     * @return $movieDetails Returns API response data as an array  
+     */
+    public function getEpisodeDetails(): ?array
+    {
+        $apiKey = $_ENV['API_KEY'];
+        $client = HttpClient::create();
+        $showTitle2 = $this->getShowTitle()->getTitle();
+
+        $response = $client->request(
+            'GET',
+            "http://www.omdbapi.com/?apikey={$apiKey}&t={$showTitle2}&Season={$this->season}&Episode={$this->episode}"
+        );
+
+        if(array_key_exists('Error', $response->toArray())){
+            $movieDetails = array('Plot' => "Unable to retrieve movie details from OMDBapi.", "Rated" => "No rating available", "Genre" => "Unavailable", "Year" => "Year unavailable");
+        } else {
+            $movieDetails = $response->toArray(); 
+        }
+
+        return $movieDetails;
     }
 }

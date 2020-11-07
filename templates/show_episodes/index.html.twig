@@ -3,7 +3,7 @@
 {% block title %}ShowEpisodes index{% endblock %}
 
 {% block body %}
-    {% include 'modules/nav.html.twig' with { 'show_id': show_episodes[0].showTitle } %}
+    {% include 'modules/nav.html.twig' with { 'show_id': show_episodes[0].showTitle } %} {# TODO: Why am I passing this param?? #}
     
     <table class="show-list">
         <tbody>
