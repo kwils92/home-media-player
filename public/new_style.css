@@ -90,26 +90,19 @@ body{
             margin: 0 0 10% 0;
         }
 
-        .c-player__details--genre{
-            color: grey;
-            font-style: italic;
-            font-size: 1em;
-            margin: 0 0 0 2.5%;
-        }
-
         .c-show-genre--genre-container{
             color: grey;
             font-style: italic;
             font-size: 1em;
             text-align: center;
-            margin: 5% 0 3% 0;
+            margin: 2% 2% 3% 0;
         }
 
         .c-player__details--genre-box{
             color: var(--text-blue);
             font-family: Calibri;
             margin: 2% 0 0 2.5%;
-            display: inline;
+            display: inline-block;
             border: 1px solid var(--text-blue);
             border-radius: 5px;
             padding: 1%;
@@ -183,6 +176,7 @@ body{
             display: block;
             font-size: 2em;
             text-decoration: none;
+            margin: 3% 0 0 0;
         }
                 
     /* ICONS */
@@ -198,18 +192,18 @@ body{
 
     /* NAVIGATION */
         .c-nav{
+            display: flex; 
             font-size: 2em;
             height: 3em;
             line-height: 3em;
+            align-items: center; 
+            justify-content: space-between;
         }
 
         .c-nav__option{
             color: var(--text-brown);
-            display: inline-block; 
-            text-align: center;
-            margin: 1%;
             text-decoration: none;
-            width: 30%;
+            margin: auto;
         }
 
         .c-nav__icon{
@@ -294,18 +288,18 @@ body{
 /* JAVASCRIPT */
 .js-show-desc{
     color: var(--text-grey);
-    margin: 5% 0 0 0 ;
+    margin: 5% 0 0 0;
 }
 
 
 /* LAYOUT ITEMS */
     .l-show-list{
-        margin: 1% 0 0 1%;
+        margin: 1% 0 0 3%;
         width: 80%;
     }
 
     .l-show-card{
-        height: 5em;
+        height: 2em;
     }
 
     .l-home-container{

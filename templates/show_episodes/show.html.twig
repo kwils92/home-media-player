@@ -3,14 +3,18 @@
 {% block title %}ShowEpisodes{% endblock %}
 
 {% block body %}
+    {# Navigation menu #}
     {% include 'modules/nav.html.twig' %}
 
+    {# Link back to Episodes #}
     <a class="c-back-link m-remove-underline" href="{{ path('shows_show', {'id': show_episode.showTitle.id}) }}"><< Back to Episodes</a>
 
+    {# Video Player #}
     {% include 'modules/video_player.html.twig' with { 'filepath': show_episode.filepath } %}
 
     <h1 class="c-player-title">{{ show_episode.title|replace({ '_': ' ' }) }}</h1>
     
+    {# Video Star Rating #}
     <a href="{{ path('show_episodes_rate', {'id': show_episode.id}) }}" class="m-remove-underline">
         <div class="c-player-rating">
             {% for ctr in 1..5 %}
@@ -23,11 +27,14 @@
         </div>
     </a>
 
+    {# Video Information #}
     <p class="c-player__details--rated">{{ episode_details.Rated}} |  {{ episode_details.Year }} | S{{ show_episode.season }}E{{ show_episode.episode }}{{ show_episode.episodePart }}</p>
 
+    {# Genre Tokens #}
     <div class="c-player__details--genre-container">
         {% include 'modules/genre_boxes.html.twig' with { 'genres': episode_details.Genre|split(',') } %}
     </div>
     
+    {# Plot Synopsis #}
     <p class="c-player__details--plot">{{ episode_details.Plot }}</p>
 {% endblock %}

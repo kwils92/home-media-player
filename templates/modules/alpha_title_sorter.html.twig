@@ -15,12 +15,9 @@
 
         {% endif %}
 
-        <div class="l-show-card" id="js-card-title-{{ video_id }}">
-            <a href="{{ path( path_name , { 'id': video_id }) }}" class="c-show-card__title">
-                {{ video_title|replace({ '_': ' ' }) }} 
-            </a>
-            <div id="js-show-desc-{{ video_id }}" class="js-show-desc m-hide-mobile"></div>      
-        </div>
+        <a href="{{ path( path_name , { 'id': video_id }) }}" class="c-show-card__title">
+            {{ video_title|replace({ '_': ' ' }) }} 
+        </a>    
 
         {% set prevIntial = video_title|first|upper %}
 

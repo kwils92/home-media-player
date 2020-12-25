@@ -3,21 +3,26 @@
 {% block title %}Shows{% endblock %}
 
 {% block body %}
+    {# Navigation Menu #}
     {% include 'modules/nav.html.twig' %}
 
     <h1 class="c-show-title" >{{ show.title|replace({'_': ' '}) }}</h1>
 
+    {# Genre Tokens #}
     <div class="c-show-genre--genre-container">
         {% include 'modules/genre_boxes.html.twig' with { 'genres': show_details.Genre|split(',') } %}
     </div>
 
+    {# Show Synopsis #}
     <p class="c-show-plot">{{ show_details.Plot }}</p>
     
+    {# Iterate through episodes in a show #}
     {% set prevSeason = null %}
 
     <div class="c-season-container">
 
         {% for ep2 in episodes %}
+            {# If the current episodes season doesn't equal the season of the episode before, print the new season header #}
             {% if ep2.season != prevSeason %}
 
                 <div class="sub-season season-{{ ep2.season }}">

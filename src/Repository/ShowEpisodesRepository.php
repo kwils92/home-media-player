@@ -52,4 +52,13 @@ class ShowEpisodesRepository extends ServiceEntityRepository
     // {
     //     return $this->findBy(array('show_title' => $showId), array('season' => 'ASC'));
     // }
+
+    /**
+     * @param $sortType The sort type, ASC or DESC 
+     * @return Shows[] Returns an array of Movie Objects
+     */
+    public function findAllSorted($sortType)
+    {
+        return $this->findBy(array(), array('episode' => $sortType));
+    }
 }

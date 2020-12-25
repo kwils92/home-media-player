@@ -54,7 +54,7 @@ class ShowsController extends AbstractController
      */
     public function show(Shows $show, ShowEpisodesRepository $sepRepo): Response
     {
-        $episodes = $sepRepo->findBy(['showTitle' => $show->getId()], array('season' => 'ASC'));
+        $episodes = $sepRepo->findBy(['showTitle' => $show->getId()], array('season' => 'ASC', 'episode' => 'ASC'));
 
         return $this->render('shows/show.html.twig', [
             'show' => $show,
