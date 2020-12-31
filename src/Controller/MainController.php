@@ -18,4 +18,12 @@ class MainController extends AbstractController
 
         ]);
     }
+
+    /**
+     * @Route("/admin_page", name="admin_page")
+     */
+    public function admin()
+    {
+        return $this->render('static_pages/admin_landing.html.twig');
+    }
 }

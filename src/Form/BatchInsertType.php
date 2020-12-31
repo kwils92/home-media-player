@@ -22,7 +22,11 @@ class BatchInsertType extends AbstractType
                     'Rick and Morty' => 1,
                     'South Park' => 2,
                     'Adventure Time' => 3,
-                    'SpongeBob SquarePants' => 1,
+                    'SpongeBob SquarePants' => 4,
+                    'One Punch Man' => 5,
+                    'Parks and Recreation' => 6, 
+                    'Teen Wolf' => 7,
+                    'Futurama' => 8,
                 ]
             ])
             ->add('season', IntegerType::class)

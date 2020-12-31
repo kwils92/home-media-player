@@ -95,12 +95,29 @@ class ShowEpisodesController extends AbstractController
     /**
      * @Route("/{id}", name="show_episodes_show", methods={"GET"})
      */
-    public function show(ShowEpisodes $showEpisode): Response
+    public function show(ShowEpisodes $showEpisode, ShowEpisodesRepository $showEpisodesRepository): Response
     {
         $episodeDetails = $showEpisode->getEpisodeDetails();
-        
+
+        $prevEpisode = $showEpisodesRepository->findOneBy(
+            array('episode'   => $showEpisode->getEpisode() - 1, 
+                  'season'    => $showEpisode->getSeason(), 
+                  'showTitle' => $showEpisode->getShowTitle()
+            )
+        );
+
+         
+        $nextEpisode = $showEpisodesRepository->findOneBy(
+            array('episode'   => $showEpisode->getEpisode() + 1, 
+                  'season'    => $showEpisode->getSeason(), 
+                  'showTitle' => $showEpisode->getShowTitle()
+            )
+        );
+
         return $this->render('show_episodes/show.html.twig', [
             'show_episode' => $showEpisode,
+            'next_episode' => $nextEpisode,
+            'prev_episode' => $prevEpisode, 
             'episode_details' => $episodeDetails,
         ]);
     }

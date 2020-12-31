@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gonna watch something? Nice.{% endblock %}
+
+{% block body %}
+
+    {% include 'modules/nav.html.twig' %}
+
+    <a href="{{ path('new_batch') }}" class="">Upload a New Season (batch)</a>
+
+{% endblock %}

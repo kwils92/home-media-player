@@ -7,7 +7,15 @@
     {% include 'modules/nav.html.twig' %}
 
     {# Link back to Episodes #}
-    <a class="c-back-link m-remove-underline" href="{{ path('shows_show', {'id': show_episode.showTitle.id}) }}"><< Back to Episodes</a>
+    {% if prev_episode != null %}
+        <a class="c-back-link m-remove-underline" href="{{ path('show_episodes_show', {'id': prev_episode.id}) }}"><< Previous Episode</a>
+    {% endif %}
+
+    <a class="c-back-link m-remove-underline" href="{{ path('shows_show', {'id': show_episode.showTitle.id}) }}"> Back to Episodes</a>
+
+    {% if next_episode != null %}
+        <a class="c-back-link m-remove-underline" href="{{ path('show_episodes_show', {'id': next_episode.id}) }}"> Next Episode >></a>
+    {% endif %}
 
     {# Video Player #}
     {% include 'modules/video_player.html.twig' with { 'filepath': show_episode.filepath } %}
