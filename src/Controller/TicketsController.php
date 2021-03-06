@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Tickets;
 use App\Form\TicketsType;
+use App\Service\UtilController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +32,7 @@ class TicketsController extends AbstractController
     /**
      * @Route("/new", name="tickets_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UtilController $util): Response
     {
         $ticket = new Tickets();
         $form = $this->createForm(TicketsType::class, $ticket);
@@ -41,6 +42,8 @@ class TicketsController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($ticket);
             $entityManager->flush();
+
+            $util->sendEmailNotification($ticket); 
 
             return $this->redirectToRoute('tickets_index');
         }

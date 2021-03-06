@@ -1,0 +1,1 @@
+Command to create the bulk episodes file is "dir -n > _list.txt" 
