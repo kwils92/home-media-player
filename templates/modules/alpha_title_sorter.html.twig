@@ -5,21 +5,26 @@
 
 <div class="l-show-list"> 
     {% for video in videos %}
+        
         {% set video_id = video.id %}
-        {% set video_title = video.title %}
+        
+        {% if video.sortingField is defined %}
+            {% set sorting_title = video.sortingField %}
+        {% else %}
+            {% set sorting_title = video.title %}
+        {% endif %}
 
+        {% if (sorting_title|first|upper != prevIntial) %}
 
-        {% if (video_title|first|upper != prevIntial) %}
-
-            <p class="c-title-header"> {{ video_title|first|upper }} </p>
+            <p class="c-title-header"> {{ sorting_title|first|upper }} </p>
 
         {% endif %}
 
         <a href="{{ path( path_name , { 'id': video_id }) }}" class="c-show-card__title">
-            {{ video_title|replace({ '_': ' ' }) }} 
+            {{ sorting_title|replace({ '_': ' ' }) }} 
         </a>    
 
-        {% set prevIntial = video_title|first|upper %}
+        {% set prevIntial = sorting_title|first|upper %}
 
     {% else %}
 

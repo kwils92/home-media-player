@@ -5,7 +5,10 @@
 {% block body %}
 
     {% include 'modules/nav.html.twig' %}
+    <ul>
+        <li><a href="{{ path('new_batch') }}" class="">Upload a New Season (batch)</a></li>
+        <li><a href="{{ path('new_movie_batch') }}" class="">Upload Movies (batch)</a></li>
+    </ul>
 
-    <a href="{{ path('new_batch') }}" class="">Upload a New Season (batch)</a>
 
 {% endblock %}

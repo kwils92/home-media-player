@@ -43,6 +43,11 @@ class Movies
      */
     private $format;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $sortingField;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +111,18 @@ class Movies
         $this->format = $format;
 
         return $this;
+    }
+
+    public function getSortingField(): ?string
+    {
+        return $this->sortingField; 
+    }
+
+    public function setSortingField($sortingField): self
+    {
+        $this->sortingField = $sortingField; 
+
+        return $this; 
     }
 
     /**

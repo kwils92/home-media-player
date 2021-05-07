@@ -5,8 +5,9 @@ namespace App\Controller;
 use App\Entity\Movies;
 use App\Form\MoviesType;
 use App\Repository\MoviesRepository;
+use App\Service\UtilController;
+use App\Form\BatchMovieInsertType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,6 +46,46 @@ class MoviesController extends AbstractController
 
         return $this->render('movies/new.html.twig', [
             'movie' => $movie,
+            'form' => $form->createView(),
+        ]);
+    }
+    
+    /**
+     * @Route("/movie_batch", name="new_movie_batch", methods={"GET", "POST"}))
+     */
+    public function bulkMovieInsertFromFile(Request $request, UtilController $util) : Response
+    {
+        $form = $this->createForm(BatchMovieInsertType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $data = $form->getData();
+            $contents = file($data['file']);
+            
+            foreach($contents as $record){
+                $Movie = new Movies(); 
+
+                $Movie
+                    ->setTitle($util->formatMediaTitle($record))
+                    ->setFilepath($util->formatMediaFilePath('Movies', 'video_sym', '', '', $record))
+                    ->setRating(0)
+                    ->setCategory(null)
+                    ->setFormat($util->determineFileTypeFromFile('Movies', $record))
+                    ->setSortingField(
+                        $util->spliceArticleForSorting(
+                            $util->formatMediaTitle($record)
+                        )
+                    );
+                $entityManager->persist($Movie);
+            }
+
+            $entityManager->flush(); 
+            
+            return $this->redirectToRoute('movies_index');
+        }
+
+        return $this->render('static_pages/batch_insert.html.twig', [ 
             'form' => $form->createView(),
         ]);
     }
@@ -115,4 +156,5 @@ class MoviesController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 }

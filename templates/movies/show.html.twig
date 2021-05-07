@@ -5,29 +5,37 @@
 {% block body %}
     {% include 'modules/nav.html.twig' %}
 
-    {% include 'modules/video_player.html.twig' with { 'filepath': movie.filepath } %}
+    <div class="l-player-container">
     
-    <h1 class="c-player-title">{{ movie.title|replace({ '_': ' ' }) }}</h1>
-
-    <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="m-remove-underline">
-        <div class="c-player-rating">
-            {% for ctr in 1..5 %}
-                {% if ctr <= movie.rating %}
-                    <i class="fas fa-star c-star m-align-c"></i> 
-                {% else %}
-                    <i class="far fa-star c-star m-align-c"></i> 
-                {% endif %}
-            {% endfor %}
+        <div class="l-video-container">
+            {% include 'modules/video_player.html.twig' with { 'filepath': movie.filepath } %}
         </div>
-    </a>
-    
-    <p class="c-player__details--rated">{{ movie_details.Rated}} |  {{ movie_details.Year }}</p>
 
-    <div class="c-player__details--genre-container">
-        {% include 'modules/genre_boxes.html.twig' with { 'genres': movie_details.Genre|split(',') } %}
+        <div class="l-info-container">
+            <h1 class="c-player-title">{{ movie.title|replace({ '_': ' ' }) }}</h1>
+
+            <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="m-remove-underline">
+                <div class="c-player-rating">
+                    {% for ctr in 1..5 %}
+                        {% if ctr <= movie.rating %}
+                            <i class="fas fa-star c-star m-align-c"></i> 
+                        {% else %}
+                            <i class="far fa-star c-star m-align-c"></i> 
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </a>
+            
+            <p class="c-player__details--rated">{{ movie_details.Rated}} |  {{ movie_details.Year }}</p>
+
+            <div class="c-player__details--genre-container">
+                {% include 'modules/genre_boxes.html.twig' with { 'genres': movie_details.Genre|split(',') } %}
+            </div>
+            
+            <p class="c-player__details--plot">{{ movie_details.Plot }}</p>
+        </div>
+
     </div>
-    
-    <p class="c-player__details--plot">{{ movie_details.Plot }}</p>
 {% endblock %}
 
 

@@ -75,7 +75,7 @@ class ShowEpisodesController extends AbstractController
                     ->setShowTitle($sRepo->findOneBy(array('id' => $data['show'])))
                     ->setEpisode($util->determineEpisodeFromFile($record))
                     ->setCategory('S')
-                    ->setFormat($util->determineFileTypeFromFile($record));
+                    ->setFormat($util->determineFileTypeFromFile('Shows', $record));
 
                 $entityManager->persist($Episode);
             }

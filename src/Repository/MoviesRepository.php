@@ -54,6 +54,6 @@ class MoviesRepository extends ServiceEntityRepository
      */
     public function findAllSorted($sortType)
     {
-        return $this->findBy(array(), array('title' => $sortType));
+        return $this->findBy(array(), array('sortingField' => $sortType));
     }
 }
