@@ -6,7 +6,7 @@
     {# Navigation menu #}
     {% include 'modules/nav.html.twig' %}
 
-    {# Link back to Episodes #}
+    {# Links between the Episodes #}
     {% if prev_episode != null %}
         <a class="c-back-link m-remove-underline" href="{{ path('show_episodes_show', {'id': prev_episode.id}) }}"><< Previous Episode</a>
     {% endif %}

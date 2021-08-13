@@ -122,6 +122,12 @@ body{
         .c-episode-list{   
             list-style: none;
         }  
+
+        .c-anchor-search__link{
+            color: var(--text-blue);
+            font-size: 1.5em;
+            text-decoration: none;
+        }
     
     /* BUTTONS */
         .c-button{
@@ -303,7 +309,7 @@ body{
 
 /* LAYOUT ITEMS */
     .l-show-list{
-        margin: 1% 0 0 3%;
+        margin: 1% 0 10% 3%;
         width: 80%;
     }
 
@@ -313,6 +319,10 @@ body{
 
     .l-home-container{
         margin-top: 50%;
+    }
+
+    .l-anchor-search{
+        text-align: center;
     }
 
 
@@ -335,6 +345,13 @@ body{
 
     tr:nth-child(even){
         background-color: var(--bg-pink);
+    }
+
+    .m-btt-link{
+        color: #e28fa4;
+        font-size: 0.75em;
+        margin: 0 0 0 1em;
+        text-decoration: none;
     }
 
 
@@ -444,6 +461,10 @@ body{
 
     .m-hide-mobile{
         display: inline;
+    }
+
+    .c-anchor-search__link{
+        font-size: 2.5em;
     }
 }
 

@@ -16,7 +16,13 @@
 
         {% if (sorting_title|first|upper != prevIntial) %}
 
-            <p class="c-title-header"> {{ sorting_title|first|upper }} </p>
+            <p class="c-title-header" id="{{ sorting_title|first|upper }}"> 
+                {{ sorting_title|first|upper }} 
+                
+                <a href='#btt' class="m-btt-link"> 
+                    Back to top 
+                </a> 
+            </p>
 
         {% endif %}
 

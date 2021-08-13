@@ -52,6 +52,7 @@ class UtilController
     public function determineFileTypeFromFile($mediaType, $rawTitle) : String
     {
         $splitTitle = explode('.', $rawTitle);
+        
         if($mediaType === 'Shows'){
             $fileType = $splitTitle[1];
         } else {

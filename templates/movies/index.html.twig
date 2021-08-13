@@ -6,6 +6,8 @@
 
     {% include 'modules/nav.html.twig' %}
 
+    {% include 'modules/alpha_quick_bar.html.twig' with { 'videos': movies, 'anchor_search': anchor_search } %} 
+
     {% include 'modules/alpha_title_sorter.html.twig' with { 'videos': movies, 'path_name': 'movies_show' } %}
 
 {% endblock %}

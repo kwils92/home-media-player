@@ -3,6 +3,7 @@
 {% block title %}Shows{% endblock %}
 
 {% block body %}
+
     {# Navigation Menu #}
     {% include 'modules/nav.html.twig' %}
 
@@ -35,7 +36,7 @@
                                 <li class="c-episode-list__title" id="episode-{{ ep.id }}">
                                     <a href="{{ path('show_episodes_show', {'id': ep.id}) }}" class="c-episode-list__link m-remove-underline"> 
                                 
-                                        {{ ep.title|length > 22 ? ep.title|slice(0, 20)|replace({'_': ' '}) ~ '...' : ep.title|replace({'_': ' '}) }}
+                                        {{ ep.title|length >  22 ? ep.title|slice(0, 20)|replace({'_': ' '}) ~ '...' : ep.title|replace({'_': ' '}) }}
                                         
                                         <span class="c-episode-list__epi-info"> S{{ep.season}}E{{ep.episode}}{{ep.episodePart}} </span> 
 

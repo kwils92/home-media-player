@@ -22,8 +22,24 @@ class MoviesController extends AbstractController
      */
     public function index(MoviesRepository $moviesRepository): Response
     {
+        $movies = $moviesRepository->findAllSorted('ASC'); 
+
+        //array for the anchor search bar at the top of the index page 
+        $anchorSearch = array(); 
+
+        foreach($movies as $mov){
+            $newLetter = substr($mov->getTitle(), 0, 1);
+
+            if(!in_array($newLetter, $anchorSearch)){
+                $anchorSearch[] = $newLetter; 
+            }
+        }
+        
+        sort($anchorSearch);
+
         return $this->render('movies/index.html.twig', [
-            'movies' => $moviesRepository->findAllSorted('ASC'),
+            'movies' => $movies,
+            'anchor_search' => $anchorSearch, 
         ]);
     }
 
