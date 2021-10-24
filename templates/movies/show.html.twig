@@ -3,6 +3,7 @@
 {% block title %}movie{% endblock %}
 
 {% block body %}
+    {# Nav Menu #}
     {% include 'modules/nav.html.twig' %}
 
     <div class="l-player-container">
@@ -12,10 +13,10 @@
         </div>
 
         <div class="l-info-container">
-            <h1 class="c-player-title">{{ movie.title|replace({ '_': ' ' }) }}</h1>
+            <h1 class="c-player-title m-blink-shadow-colour__header">{{ movie.title|replace({ '_': ' ' }) }}</h1>
 
             <a href="{{ path('movies_rate', {'id': movie.id}) }}" class="m-remove-underline">
-                <div class="c-player-rating">
+                <div class="c-player-rating m-blink-shadow-colour__yellow">
                     {% for ctr in 1..5 %}
                         {% if ctr <= movie.rating %}
                             <i class="fas fa-star c-star m-align-c"></i> 
@@ -26,13 +27,13 @@
                 </div>
             </a>
             
-            <p class="c-player__details--rated">{{ movie_details.Rated}} |  {{ movie_details.Year }}</p>
+            <p class="c-player__details--rated m-blink-shadow-colour__header">{{ movie_details.Rated}} |  {{ movie_details.Year }}</p>
 
             <div class="c-player__details--genre-container">
                 {% include 'modules/genre_boxes.html.twig' with { 'genres': movie_details.Genre|split(',') } %}
             </div>
             
-            <p class="c-player__details--plot">{{ movie_details.Plot }}</p>
+            <p class="c-player__details--plot m-blink-shadow-colour__text">{{ movie_details.Plot }}</p>
         </div>
 
     </div>

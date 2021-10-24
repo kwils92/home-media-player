@@ -6,43 +6,54 @@
     {# Navigation menu #}
     {% include 'modules/nav.html.twig' %}
 
-    {# Links between the Episodes #}
-    {% if prev_episode != null %}
-        <a class="c-back-link m-remove-underline" href="{{ path('show_episodes_show', {'id': prev_episode.id}) }}"><< Previous Episode</a>
-    {% endif %}
+    <div class="l-episode-nav">
+        {# Links between the Episodes #}
+        {% if prev_episode != null %}
+            <a class="c-back-link m-remove-underline m-blink-shadow-colour__text" href="{{ path('show_episodes_show', {'id': prev_episode.id}) }}"><< Previous Episode</a>
+        {% endif %}
 
-    <a class="c-back-link m-remove-underline" href="{{ path('shows_show', {'id': show_episode.showTitle.id}) }}"> Back to Episodes</a>
+        <a class="c-back-link m-remove-underline m-blink-shadow-colour__text" href="{{ path('shows_show', {'id': show_episode.showTitle.id}) }}"> Back to Episodes</a>
 
-    {% if next_episode != null %}
-        <a class="c-back-link m-remove-underline" href="{{ path('show_episodes_show', {'id': next_episode.id}) }}"> Next Episode >></a>
-    {% endif %}
-
-    {# Video Player #}
-    {% include 'modules/video_player.html.twig' with { 'filepath': show_episode.filepath } %}
-
-    <h1 class="c-player-title">{{ show_episode.title|replace({ '_': ' ' }) }}</h1>
-    
-    {# Video Star Rating #}
-    <a href="{{ path('show_episodes_rate', {'id': show_episode.id}) }}" class="m-remove-underline">
-        <div class="c-player-rating">
-            {% for ctr in 1..5 %}
-                {% if ctr <= show_episode.rating %}
-                    <i class="fas fa-star c-star m-align-c"></i> 
-                {% else %}
-                    <i class="far fa-star c-star m-align-c"></i> 
-                {% endif %}
-            {% endfor %}
-        </div>
-    </a>
-
-    {# Video Information #}
-    <p class="c-player__details--rated">{{ episode_details.Rated}} |  {{ episode_details.Year }} | S{{ show_episode.season }}E{{ show_episode.episode }}{{ show_episode.episodePart }}</p>
-
-    {# Genre Tokens #}
-    <div class="c-player__details--genre-container">
-        {% include 'modules/genre_boxes.html.twig' with { 'genres': episode_details.Genre|split(',') } %}
+        {% if next_episode != null %}
+            <a id="next-episode" class="c-back-link m-remove-underline m-blink-shadow-colour__text" href="{{ path('show_episodes_show', {'id': next_episode.id}) }}"> Next Episode >></a>
+        {% endif %}
     </div>
-    
-    {# Plot Synopsis #}
-    <p class="c-player__details--plot">{{ episode_details.Plot }}</p>
+
+
+    <div class="l-player-container">
+
+        <div class="l-video-container">
+            {% include 'modules/video_player.html.twig' with { 'filepath': show_episode.filepath } %}
+        </div>
+
+        <div class="l-info-container">
+        
+            <h1 class="c-player-title m-blink-shadow-colour__header">{{ show_episode.title|replace({ '_': ' ' }) }}</h1>
+            
+            {# Video Star Rating #}
+            <a href="{{ path('show_episodes_rate', {'id': show_episode.id}) }}" class="m-remove-underline">
+                <div class="c-player-rating m-blink-shadow-colour__yellow">
+                    {% for ctr in 1..5 %}
+                        {% if ctr <= show_episode.rating %}
+                            <i class="fas fa-star c-star m-align-c"></i> 
+                        {% else %}
+                            <i class="far fa-star c-star m-align-c"></i> 
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </a>
+
+            {# Video Information #}
+            <p class="c-player__details--rated m-blink-shadow-colour__header">{{ episode_details.Rated}} |  {{ episode_details.Year }} | S{{ show_episode.season }}E{{ show_episode.episode }}{{ show_episode.episodePart }}</p>
+
+            {# Genre Tokens #}
+            <div class="c-player__details--genre-container">
+                {% include 'modules/genre_boxes.html.twig' with { 'genres': episode_details.Genre|split(',') } %}
+            </div>
+            
+            {# Plot Synopsis #}
+            <p class="c-player__details--plot m-blink-shadow-colour__text">{{ episode_details.Plot }}</p>
+        </div>
+    </div>
+
 {% endblock %}

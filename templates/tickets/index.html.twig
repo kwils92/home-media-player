@@ -12,7 +12,7 @@
         </a>
     
     <table class="c-table">
-        <thead class="c-table__header">
+        <thead class="c-table__header m-blink-shadow-colour__header">
             <tr>
                 <th>Request</th>
                 <th>Outcome</th>
@@ -21,10 +21,10 @@
         </thead>
         <tbody>
         {% for ticket in tickets %}
-            <tr>
+            <tr class="m-blink-shadow-colour__text">
                 <td>{{ ticket.request }}</td>
                 <td>{{ ticket.outcome }}</td>
-                <td class="m-align-c"><a href="{{ path('tickets_edit', {'idtickets': ticket.idtickets}) }}" class="m-remove-underline">Edit</a></td>
+                <td class="m-align-c"><a href="{{ path('tickets_edit', {'idtickets': ticket.idtickets}) }}" class="m-remove-underline m-blink-shadow-colour__yellow">Edit</a></td>
             </tr>
         {% else %}
             <tr>

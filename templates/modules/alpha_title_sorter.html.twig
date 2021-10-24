@@ -16,7 +16,7 @@
 
         {% if (sorting_title|first|upper != prevIntial) %}
 
-            <p class="c-title-header" id="{{ sorting_title|first|upper }}"> 
+            <p class="c-alpha-separator m-blink-shadow-colour__header" id="{{ sorting_title|first|upper }}"> 
                 {{ sorting_title|first|upper }} 
                 
                 <a href='#btt' class="m-btt-link"> 
@@ -26,7 +26,7 @@
 
         {% endif %}
 
-        <a href="{{ path( path_name , { 'id': video_id }) }}" class="c-show-card__title">
+        <a href="{{ path( path_name , { 'id': video_id }) }}" class="m-blink-shadow-colour__text c-show-card__title">
             {{ sorting_title|replace({ '_': ' ' }) }} 
         </a>    
 

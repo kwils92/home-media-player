@@ -2,7 +2,16 @@
     boxes because the client said the details screen was "too boring." #}
 
 {% for genre in genres %}
-    <div class="c-player__details--genre-box">
-        {{ genre|upper  }}
-    </div>
+
+    {% if random(1, 3) == random(1, 3) %}
+        <div class="c-player__details--genre-box m-blink-shadow-colour__text m-no-black-shadow m-blinking-text-wrapper">
+            <span>{{ genre|upper  }}</span>
+        </div>
+    {% else %}
+        <div class="c-player__details--genre-box m-blink-shadow-colour__text m-no-black-shadow">
+            {{ genre|upper  }}
+        </div>
+    {% endif %}
+
+
 {% endfor %}
