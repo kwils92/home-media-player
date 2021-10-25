@@ -4,13 +4,20 @@
 
 {% block body %}
     {% include 'modules/nav.html.twig' %}
-
-        <a href="{{ path('tickets_new') }}" class="c-add-req__link m-remove-underline">
-            <div class="c-button m-add-req m-align-c"> 
+        <div class="m-align-c" id="new-req-btn">
+            <a href="{{ path('tickets_new') }}" class="c-add-req__link m-remove-underline c-button m-button-glow">
                 <i class="fas fa-cart-plus"></i> New Request
-            </div>
-        </a>
-    
+            </a>
+        </div>
+
+        {# <div>
+            <a href="{{ path('tickets_new') }}" class="c-add-req__link m-remove-underline ">
+                <div class="c-button m-add-req m-button-glow"> 
+                    <i class="fas fa-cart-plus"></i> New Request
+                </div>
+            </a>
+        </div> #}
+
     <table class="c-table">
         <thead class="c-table__header m-blink-shadow-colour__header">
             <tr>
@@ -21,7 +28,7 @@
         </thead>
         <tbody>
         {% for ticket in tickets %}
-            <tr class="m-blink-shadow-colour__text">
+            <tr class="m-blink-shadow-colour__text c-table__body">
                 <td>{{ ticket.request }}</td>
                 <td>{{ ticket.outcome }}</td>
                 <td class="m-align-c"><a href="{{ path('tickets_edit', {'idtickets': ticket.idtickets}) }}" class="m-remove-underline m-blink-shadow-colour__yellow">Edit</a></td>

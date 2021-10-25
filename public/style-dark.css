@@ -95,7 +95,7 @@ body{
         }    
         
         .c-player-rating{
-            margin: 2% 0 0 2.5%;
+            margin: 2% 5% 0 3%;
             font-size: 1.5em;
             display: inline;
         }
@@ -143,7 +143,7 @@ body{
             font-size: 1.5em;
             color: var(--text-blue);
             font-family: Calibri;
-            margin: 2% 0 0 2.5%;
+            margin: 2% 0 0 2%;
             display: inline-block;
             padding: 1%;
         }
@@ -168,6 +168,12 @@ body{
             font-size: 1.5em;
             text-decoration: none;
         }
+
+        .c-admin__links li{
+            list-style: none;
+            margin: 2%;
+            font-size: 1.5em;
+        }
     
     /* BUTTONS */
         .c-button{
@@ -178,6 +184,10 @@ body{
             font-size: 1.5em;
             padding: 2%;
             width: 10em;
+        }
+
+        #new-req-btn{
+            padding: 3em;
         }
 
         .c-rate-btn{
@@ -197,6 +207,12 @@ body{
             font-family: fontIndependent; 
             font-size: 2.5em;
         }
+
+        .c-page-title{
+            color: var(--icon-pink);
+            font-family: fontIndependent; 
+            font-size: 2.5em;
+        }
     
         .c-show-title{
             font-size: 4em;
@@ -212,7 +228,8 @@ body{
         }
         
         .c-season-list__header{
-            font-size: 1em;
+            font-size: 1.25em;
+            color: var(--icon-pink);
         }
         
         .c-episode-list__title{
@@ -238,6 +255,7 @@ body{
         .c-star{
             color: gold;
             margin: 0 0 0 0;
+            font-size: .5em;
         }
 
         .c-star-grey{
@@ -336,8 +354,13 @@ body{
         }
         
         .c-table__header{
+            font-size: 1.5em;
+        }
+
+        .c-table__body{
             font-size: 1.25em;
         }
+
 
 /* JAVASCRIPT */
 .js-show-desc{
@@ -372,6 +395,7 @@ body{
 
     .m-align-c{
         text-align: center;
+        padding:0px;
     }
 
     .m-hide-mobile{
@@ -433,6 +457,14 @@ body{
         text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em var(--text-shadow__blue), 0 0 0.5em var(--text-shadow__blue), 0 0 0.1em var(--text-shadow__blue);
     }
 
+    .m-button-glow{
+        box-shadow: 0 5px 30px var(--icon-pink);
+    }
+
+
+/** DESKTOP MEDIA QUERY **/
+/********************************************************/
+
 
 @media only screen and (min-width: 790px){ /*781*/
     .l-player-container{
@@ -450,7 +482,7 @@ body{
     }
 
     .l-info-container{
-        padding: 0.25em;
+        padding: 0;
         grid-area: info;
     }
 
@@ -471,11 +503,12 @@ body{
     }
     
     .c-player__details--genre-box{
-        padding: 3px 5px 3px 5px;
+        padding: 15px 5px 3px 0px;
+        margin: 0;
     }
 
     .c-player__details--plot{
-        margin: 1% 10% 0 2%;
+        margin: 1% 10% 0 0;
         font-size: 1.5em;
     }
     
@@ -486,6 +519,7 @@ body{
 
     .c-player-rating{
         font-size: 1em;
+        margin: 0;
     }
 
     .c-video-player{
@@ -495,7 +529,7 @@ body{
     }
 
     .c-player-title{
-        padding: 10%;
+        padding: 15% 0 5% 0;
         color: var(--icon-pink);
         font-family: fontIndependent; 
         font-size: 2.5em;
@@ -512,7 +546,6 @@ body{
 
     .c-button{
         font-size: 1em;
-        margin: 2% 0 2% 45%;
         padding: 1%;
         width: 10em;
     }
@@ -556,6 +589,38 @@ body{
 
     .c-anchor-search__link{
         font-size: 2.5em;
+    }
+
+    .c-table{
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .c-alpha-separator{
+        font-size: 1.5em;
+    }
+
+    .c-show-card__title{
+        color: var(--text-blue);
+        display: block;
+        font-size: 1.25em;
+        text-decoration: none;
+        margin: 1% 0 0 0;
+    }
+
+    .m-btt-link{
+        font-size: 0.5em;
+    }
+
+    .c-episode-list__link{
+        font-size: 1.25em;
+        color: var(--text-blue);
+    }    
+    
+    .c-star{
+        color: gold;
+        margin: 0 0 0 0;
+        font-size: 1em;
     }
 }
 

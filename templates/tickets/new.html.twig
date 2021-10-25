@@ -5,8 +5,9 @@
 {% block body %}
 
     {% include 'modules/nav.html.twig' %}
-    
-    <h1 class="c-player-title m-align-c">Make a new Request</h1>
-
+    <div class="m-align-c">
+        <h1 class="c-page-title m-blink-shadow-colour__header">Make a new Request</h1>
+        <p class="m-blink-shadow-colour__text">Use this page to make new requests. Include the name of the show/movie, the season, or episode numbers you want uploaded.</p>
+    </div>
     {{ include('tickets/_form.html.twig') }}
 {% endblock %}

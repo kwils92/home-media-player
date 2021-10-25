@@ -1,6 +1,6 @@
 {{ form_start(form) }}
 
-    <div class="c-form-row">
+    <div class="c-form-row m-blink-shadow-colour__text">
         {{ form_label(form.request, 'Request Name', {
                 'label_attr': {'class': 'c-form__label'}
             }) 
@@ -12,7 +12,7 @@
         }}
     </div>
 
-    <div class="c-form-row">
+    <div class="c-form-row m-blink-shadow-colour__text">
         {{ form_label(form.outcome, null, {
                 'label_attr': {'class': 'c-form__label'}
             }) 
@@ -25,7 +25,7 @@
     </div>
 
     <div class="m-align-c">
-        <button class="c-button">
+        <button class="c-button m-button-glow">
             {{ button_label|default('Save') }}
         </button>
     </div>

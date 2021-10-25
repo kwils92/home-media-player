@@ -38,23 +38,20 @@
                                 
                                         <span class="c-episode-list__epi-info m-blink-shadow-colour__header"> S{{ep.season}}E{{ep.episode}}{{ep.episodePart}} </span> 
 
+                                        {# Video Star Rating #}
+                                        <div class="c-player-rating m-blink-shadow-colour__yellow">
+                                            {% for ctr in 1..5 %}
+                                                {% if ctr <= ep.rating %}
+                                                    <i class="fas fa-star c-star m-align-c"></i> 
+                                                {% else %}
+                                                    <i class="far fa-star c-star m-align-c"></i> 
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+
+                                        
                                         {{ ep.title|length > 20 ? ep.title|slice(0, 18)|replace({'_': ' '}) ~ '...' : ep.title|replace({'_': ' '}) }}
                                         
-                                        <span class="c-episode-list__epi-info m-blink-shadow-colour__yellow"> 
-
-                                            {% if ep.rating == 0 %}
-
-                                                <i class="fas fa-star no-rating-star"></i>
-
-                                            {% else %}
-                                                {% for i in 1..ep.rating %}
-
-                                                    <i class="fas fa-star c-star m-align-c"></i> 
-
-                                                {% endfor %}
-                                            {% endif %}
-
-                                        </span>
                                     </a>
                                 </li>
 

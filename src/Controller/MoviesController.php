@@ -28,7 +28,7 @@ class MoviesController extends AbstractController
         $anchorSearch = array(); 
 
         foreach($movies as $mov){
-            $newLetter = substr($mov->getTitle(), 0, 1);
+            $newLetter = substr($mov->getSortingField(), 0, 1);
 
             if(!in_array($newLetter, $anchorSearch)){
                 $anchorSearch[] = $newLetter; 
