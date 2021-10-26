@@ -5,7 +5,7 @@ View demo on Heroku: https://safe-journey-94724.herokuapp.com/
 *NOTE: You will not actually be able to watch the videos. I think that would be illegal?*
 
 ## SUMMARY
-This project was built to allow those connected to my home network to access my movies and shows on their devices. Digital copies of our media are uploaded into a MySQL database via the "batch uploader" that is available in the application. 
+This Symfony 5 project was built to allow those connected to my home network to access my movies and shows on their devices. Digital copies of our media are uploaded into a MySQL database via the "batch uploader" that is available in the application. 
 
 The project was built mobile-first, as we can simply use our DVDs to watch on the TV, but no so much on our tablets and phones. However, the desktop version has been cleaned up and looks about as good as the mobile version. 
 
