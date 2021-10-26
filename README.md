@@ -9,6 +9,8 @@ This project was built to allow those connected to my home network to access my 
 
 The project was built mobile-first, as we can simply use our DVDs to watch on the TV, but no so much on our tablets and phones. However, the desktop version has been cleaned up and looks about as good as the mobile version. 
 
+It uses the [OMDb API](https://www.omdbapi.com/) to populate show and movie data. 
+
 ## HOW TO FORMAT DATA
 
 The file structure for **Shows** should be in this format: 
