@@ -13,6 +13,7 @@
 /vendor/
 /translations/
 /tests/
+/public/fontawesome-free-5.15.1-web
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
