@@ -39,6 +39,4 @@ There are, it should be noted, two separate batch uploads. The first for Shows a
 
 *NOTE: There currently isn't a elegant way for this application to crash. If your upload fails, it will crash. There is an open issue about it... I'll get to it* 
 
-## CONCLUSION
-
-That's about it. If you have an questions, you can email me at kenneth.c.wilson92@gmail.com. Thanks for reading! 
+Email: kenneth.c.wilson92@gmail.com. 
