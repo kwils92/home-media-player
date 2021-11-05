@@ -5,9 +5,9 @@
 {% block body %}
     {% include 'modules/nav.html.twig' %}
     
-    <h1 class="c-player-title m-align-c">How did you like it?</h1>
+    <h1 class="c-player-title m-align-c m-blink-shadow-colour__header">How did you like it?</h1>
 
-    <div class="m-align-c">
+    <div>
         {{ include('movies/_rate_form.html.twig', {'button_label': 'Update'}) }}
     </div>
 {% endblock %}

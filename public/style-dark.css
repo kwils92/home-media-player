@@ -165,7 +165,7 @@ body{
 
         .c-anchor-search__link{
             color: var(--text-blue);
-            font-size: 1.5em;
+            font-size: 2.25em;
             text-decoration: none;
         }
 
@@ -184,6 +184,7 @@ body{
             font-size: 1.5em;
             padding: 2%;
             width: 10em;
+            cursor: pointer;
         }
 
         #new-req-btn{
@@ -263,6 +264,20 @@ body{
             margin: 0 0 0 0;
         }
 
+        #show-view-stars{
+            font-size: 2.5em;
+        }
+
+        .c-bookmark{
+            cursor: pointer; 
+            font-size: 2.15em;
+            margin: 0 8% 0 3%;
+        }
+
+        .c-bookmark--sm{
+            font-size: 1em;
+        }
+
     /* NAVIGATION */
         .c-nav{
             display: flex; 
@@ -284,7 +299,8 @@ body{
         }
 
     /* FORMS */
-        .c-form{
+        /* .c-form{
+            text-align: center;
             margin: 0 0 0 25%;
             width: 50%;
         }
@@ -292,12 +308,11 @@ body{
         .c-form__field{
             border: 1px solid var(--bg-pink);
             border-radius: 25px;
-            color: var(--text-brown);
             font-size: 2.5em;
-            margin: 2% 0 0 0;
+            font-family: sans-serif;
             padding: 0 0.5em 0 0.5em;
         }
-        
+
         .c-form__label{
             color: var(--text-blue);
             font-size: 1.5em;
@@ -307,7 +322,30 @@ body{
             display: block;
             margin: 5% 25% 5% 10%;
             width: 50%;
+        } */
+
+        .c-form__field{
+            border-radius: 25px;
+            font-size: 2.25em;
+            margin: 1% 0 2% 24%;
+            width: 50%;
         }
+        
+        .c-form__label{
+            color: var(--text-blue);
+            display: block;
+            font-size: 1.25em;
+            margin: 0 0 0 24%;
+            width: 50%;
+        }
+        
+        .c-form-row{
+            margin: 5% 0 5% 0;
+            width: 100%;
+        }
+    
+
+
 
     /* HOME PAGE ITEMS */
         .c-home__icon{
@@ -440,6 +478,11 @@ body{
         text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #FFF000, 0 0 0.5em #FFF000, 0 0 0.1em #FFF000, 0 10px 3px #000;
     }
 
+    .m-blink-shadow-colour__white{
+        color: #fff; 
+        text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #fff, 0 0 0.5em #fff, 0 0 0.1em #fff, 0 10px 3px #000;
+    }
+
     .m-blinking-text-wrapper__offset span{
         animation: blink linear infinite 4s;
     }
@@ -461,12 +504,17 @@ body{
         box-shadow: 0 5px 30px var(--icon-pink);
     }
 
+    /* This is set to important because font-awesome has a display: inline-block that overrides this for the episode bookmarks on the shows page */ 
+    .m-hidden{
+        display: none!important;
+    }
+
 
 /** DESKTOP MEDIA QUERY **/
 /********************************************************/
 
 
-@media only screen and (min-width: 790px){ /*781*/
+@media only screen and (min-width: 810px){ /*781*/
     .l-player-container{
         margin: 5% 0 0 0;
         display: grid; 
@@ -621,6 +669,19 @@ body{
         color: gold;
         margin: 0 0 0 0;
         font-size: 1em;
+    }
+
+    #show-view-stars{
+        font-size: 1em;
+    }
+
+    .c-bookmark{
+        margin-left: 0%;
+        font-size: 1.15em;
+    }
+
+    .m-add-req{
+        margin-left: 45%;
     }
 }
 

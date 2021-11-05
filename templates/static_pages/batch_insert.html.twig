@@ -1,4 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gonna watch something? Nice.{% endblock %}
+
+{% block body %}
+
+{% include 'modules/nav.html.twig' %}
+
+<h1 class="c-page-title m-blink-shadow-colour__header m-align-c">Batch Season Upload</h1>
+<p class="m-blink-shadow-colour__text m-align-c">Use this page to upload show seasons via batch file. Each season must have it's own file. Do not upload multiple seasons in the same file.</p>
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+       <div class="c-form-row">
+        {{ form_label(form.show, 'Show Name', {
+                'label_attr': {'class': 'c-form__label m-blink-shadow-colour__text'}
+            })
+        }}
+        {{ form_widget(form.show, {
+                'attr': {'class': 'c-form__field m-align-c'}
+            })
+        }}
+    </div>
+
+    <div class="c-form-row">
+        {{ form_label(form.season, 'Season Number', {
+                'label_attr': {'class': 'c-form__label m-blink-shadow-colour__text'}
+            })
+        }}
+        {{ form_widget(form.season, {
+                'attr': {'class': 'c-form__field m-align-c'}
+            })
+        }}
+    </div>
+
+    <div class="c-form-row">
+        {{ form_label(form.file, 'Batch File', {
+                'label_attr': {'class': 'c-form__label m-blink-shadow-colour__text'}
+            })
+        }}
+        {{ form_widget(form.file, {
+                'attr': {'class': 'c-form__field m-align-c'}
+            })
+        }}
+    </div>
+
+
+    <button class="c-button m-add-req m-button-glow">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+{% endblock %}

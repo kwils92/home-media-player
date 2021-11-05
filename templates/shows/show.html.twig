@@ -48,9 +48,12 @@
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
-
                                         
                                         {{ ep.title|length > 20 ? ep.title|slice(0, 18)|replace({'_': ' '}) ~ '...' : ep.title|replace({'_': ' '}) }}
+
+                                        {# Do an onload event here #}
+                                        <i class="fas fa-bookmark c-bookmark--sm m-blink-shadow-colour__white m-hidden" id="bookmark-{{ ep.id }}">
+                                        </i>
                                         
                                     </a>
                                 </li>

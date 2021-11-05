@@ -82,7 +82,7 @@ class ShowEpisodesController extends AbstractController
 
             $entityManager->flush(); 
             
-            return $this->redirectToRoute('show_episodes_index');
+            return $this->redirectToRoute('shows_index');
         }
 
         return $this->render('static_pages/batch_insert.html.twig', [ 
@@ -144,7 +144,7 @@ class ShowEpisodesController extends AbstractController
      */
     public function delete(Request $request, ShowEpisodes $showEpisode): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$showEpisode->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'. $showEpisode->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($showEpisode);
             $entityManager->flush();

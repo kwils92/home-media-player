@@ -5,9 +5,8 @@
 {% block body %}
     {% include 'modules/nav.html.twig' %}
     
-    <h1>Create new Movies</h1>
+    <h1 class="m-blink-shadow-colour__header m-align-c">Create new Movies</h1>
 
     {{ include('movies/_form.html.twig') }}
 
-    <a href="{{ path('movies_index') }}">back to list</a>
 {% endblock %}

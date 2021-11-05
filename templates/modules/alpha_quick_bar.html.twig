@@ -1,8 +1,8 @@
 {# This creates a menu bar at the top of the index screen so that the user can quickly select down to a distant letter #}
 
 <div class="l-anchor-search" id="btt">
-    <p>Jump to</p>
+    <p class="m-blink-shadow-colour__yellow">Jump to</p>
     {% for letter in anchor_search %}
-        <a class="c-anchor-search__link m-blink-shadow-colour__text" href="#{{ letter }}"> {{ letter }} </a> 
+        <a class="c-anchor-search__link m-blink-shadow-colour__yellow" href="#{{ letter }}"> {{ letter }} </a> 
     {% endfor %}
 </div>

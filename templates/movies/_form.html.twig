@@ -1,4 +1,41 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="c-form-row">
+        {{ form_label(form.title, 'Title', {
+                'label_attr': {'class': 'c-form__label m-blink-shadow-colour__text'}
+            })
+        }}
+        {{ form_widget(form.title, {
+                'attr': {'class': 'c-form__field m-align-c'}
+            })
+        }}
+    </div>
+
+    <div class="c-form-row">
+        {{ form_label(form.rating, 'Rating', {
+                'label_attr': {'class': 'c-form__label m-blink-shadow-colour__text'}
+            })
+        }}
+        {{ form_widget(form.rating, {
+                'attr': {'class': 'c-form__field m-align-c'}
+            })
+        }}
+    </div>
+
+    <div class="c-form-row">
+        {{ form_label(form.format, 'Format', {
+                'label_attr': {'class': 'c-form__label m-blink-shadow-colour__text'}
+            })
+        }}
+        {{ form_widget(form.format, {
+                'attr': {'class': 'c-form__field m-align-c'}
+            })
+        }}
+    </div>
+    
+    <div class="m-align-c">
+        <button class="c-button m-button-glow">
+            {{ button_label|default('Save') }}
+        </button>
+    </div>
+
 {{ form_end(form) }}

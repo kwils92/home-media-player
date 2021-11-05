@@ -27,12 +27,15 @@
         </div>
 
         <div class="l-info-container">
-        
             <h1 class="c-player-title m-blink-shadow-colour__header">{{ show_episode.title|replace({ '_': ' ' }) }}</h1>
-            
+
+            <i class="far fa-bookmark c-bookmark m-blink-shadow-colour__white" id="vPlayer-bookmark" 
+                onclick="bookMarkEpisode({{ show_episode.id }}, '{{ show_episode.showTitle.id}}')">
+            </i>
+
             {# Video Star Rating #}
             <a href="{{ path('show_episodes_rate', {'id': show_episode.id}) }}" class="m-remove-underline">
-                <div class="c-player-rating m-blink-shadow-colour__yellow">
+                <div class="c-player-rating m-blink-shadow-colour__yellow"  id="show-view-stars">
                     {% for ctr in 1..5 %}
                         {% if ctr <= show_episode.rating %}
                             <i class="fas fa-star c-star m-align-c"></i> 
@@ -57,3 +60,5 @@
     </div>
 
 {% endblock %}
+
+

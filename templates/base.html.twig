@@ -15,10 +15,20 @@
         {% endblock %}
     
     </head>
-    <body>        
+    
+    {% if ((show_episode.id is defined) and (show_episode.showTitle.id is defined)) %}
+        <body class="" onload="detectBookMarkOnPage({{ show_episode.id }}, {{ show_episode.showTitle.id }})">  
+    {% else %}
+        <body>  
+    {% endif %}
+
+          
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('js/detectEndOfEpisode.js') }}"></script>
+            <script src="{{ asset('js/autoPlayDetection.js') }}"></script>
+            <script src="{{ asset('js/bookMarkEpisode.js') }}"></script>
+            <script src="{{ asset('js/detectBookMark.js') }}"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         {% endblock %}
     </body>

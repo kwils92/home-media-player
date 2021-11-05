@@ -17,6 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MoviesController extends AbstractController
 {
+
+
     /**
      * @Route("/", name="movies_index", methods={"GET"})
      */
@@ -46,7 +48,7 @@ class MoviesController extends AbstractController
     /**
      * @Route("/new", name="movies_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UtilController $util): Response
     {
         $movie = new Movies();
         $form = $this->createForm(MoviesType::class, $movie);
@@ -54,6 +56,19 @@ class MoviesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $data = $form->getData();
+
+
+            $movie
+                ->setTitle(str_replace(' ', '_', $data->getTitle()))
+                ->setFilepath('video_sym/Movies/' . $data->getTitle() . '.' . $data->getFormat())
+                ->setRating($data->getRating())
+                ->setCategory(null)
+                ->setFormat($data->getFormat())
+                //you don't need to use formatMediaTitle() to the below (like in batch upload) because the title isn't coming in with the hypens and periods.
+                ->setSortingField($util->spliceArticleForSorting($data->getTitle())) 
+            ;
+
             $entityManager->persist($movie);
             $entityManager->flush();
 
@@ -90,7 +105,7 @@ class MoviesController extends AbstractController
                     ->setFormat($util->determineFileTypeFromFile('Movies', $record))
                     ->setSortingField(
                         $util->spliceArticleForSorting(
-                            $util->formatMediaTitle($record)
+                            $util->formatMediaTitle($record) 
                         )
                     );
                 $entityManager->persist($Movie);
@@ -101,7 +116,7 @@ class MoviesController extends AbstractController
             return $this->redirectToRoute('movies_index');
         }
 
-        return $this->render('static_pages/batch_insert.html.twig', [ 
+        return $this->render('static_pages/batch_movie_insert.html.twig', [ 
             'form' => $form->createView(),
         ]);
     }
