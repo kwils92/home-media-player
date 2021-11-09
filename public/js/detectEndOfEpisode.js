@@ -1,4 +1,7 @@
-document.getElementById('show-episode-vp').addEventListener('ended', goToNextEpisode,false);
+if(document.getElementById('show-episode-vp') !== null){
+    document.getElementById('show-episode-vp').addEventListener('ended', goToNextEpisode,false);
+}
+
 
 function goToNextEpisode(e) {
     if(document.getElementById('next-episode') !== null){
@@ -6,4 +9,5 @@ function goToNextEpisode(e) {
         location.href = nextEpisodeURL + "?autoplay=true"; 
     }
 }
+
 

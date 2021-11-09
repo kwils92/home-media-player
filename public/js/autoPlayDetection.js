@@ -1,4 +1,6 @@
-document.getElementById('show-episode-vp').addEventListener('canplay', autoPlayVideo,false);
+if(document.getElementById('show-episode-vp') !== null){
+    document.getElementById('show-episode-vp').addEventListener('canplay', autoPlayVideo,false);
+}
 
 function autoPlayVideo(e) {
     let urlString = new URL(location.href); 
