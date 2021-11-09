@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use PhpParser\Node\Expr\Cast\String_;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 /**
  * ShowEpisodes
@@ -206,21 +207,32 @@ class ShowEpisodes
      */
     public function getEpisodeDetails(): ?array
     {
-        $apiKey = $_ENV['API_KEY'];
-        $client = HttpClient::create();
-        $showTitle2 = $this->getShowTitle()->getTitle();
+        $cache = new FileSystemAdapter(); 
 
-        $response = $client->request(
-            'GET',
-            "http://www.omdbapi.com/?apikey={$apiKey}&t={$showTitle2}&Season={$this->season}&Episode={$this->episode}"
-        );
+        $cachedEpisodeDetails = $cache->get('hdc-' . $this->id, function () {
+            $apiKey = $_ENV['API_KEY'];
+            $client = HttpClient::create();
+            $showTitle2 = $this->getShowTitle()->getTitle();
+    
+            $response = $client->request(
+                "GET",
+                "http://www.omdbapi.com/?apikey={$apiKey}&t={$showTitle2}&Season={$this->season}&Episode={$this->episode}"
+            );
+    
+            if(array_key_exists('Error', $response->toArray())){
+                $episodeDetails = array(
+                    "Plot" => "Unable to retrieve movie details from OMDBapi.", 
+                    "Rated" => "No rating available", 
+                    "Genre" => "Unavailable", 
+                    "Year" => "Year unavailable"
+                );
+            } else {
+                $episodeDetails = $response->toArray(); 
+            }
 
-        if(array_key_exists('Error', $response->toArray())){
-            $movieDetails = array('Plot' => "Unable to retrieve movie details from OMDBapi.", "Rated" => "No rating available", "Genre" => "Unavailable", "Year" => "Year unavailable");
-        } else {
-            $movieDetails = $response->toArray(); 
-        }
+            return $episodeDetails; 
+        });
 
-        return $movieDetails;
+        return $cachedEpisodeDetails;
     }
 }

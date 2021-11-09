@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MoviesRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 /**
  * @ORM\Entity(repositoryClass=MoviesRepository::class)
@@ -131,20 +132,31 @@ class Movies
      */
     public function getMovieDetails(): ?array
     {
-        $apiKey = $_ENV['API_KEY'];
-        $client = HttpClient::create();
+        $cache = new FileSystemAdapter(); 
 
-        $response = $client->request(
-            'GET',
-            "http://www.omdbapi.com/?apikey={$apiKey}&t={$this->title}"
-        );
+        $cachedMovieDetails = $cache->get('hdc-' . $this->id, function () {
+            $apiKey = $_ENV['API_KEY'];
+            $client = HttpClient::create();
+    
+            $response = $client->request(
+                "GET",
+                "http://www.omdbapi.com/?apikey={$apiKey}&t={$this->title}"
+            );
+    
+            if(array_key_exists('Error', $response->toArray())){
+                $movieDetails = array(
+                    "Plot" => "Unable to retrieve movie details from OMDBapi.", 
+                    "Rated" => "No rating available", 
+                    "Genre" => "Unavailable", 
+                    "Year" => "Year unavailable"
+                );
+            } else {
+                $movieDetails = $response->toArray(); 
+            }
+    
+            return $movieDetails;
+        });
 
-        if(array_key_exists('Error', $response->toArray())){
-            $movieDetails = array('Plot' => "Unable to retrieve movie details from OMDBapi.", "Rated" => "No rating available", "Genre" => "Unavailable", "Year" => "Year unavailable");
-        } else {
-            $movieDetails = $response->toArray(); 
-        }
-
-        return $movieDetails;
+        return $cachedMovieDetails;
     }
 }

@@ -14,6 +14,7 @@
 /translations/
 /tests/
 /public/fontawesome-free-5.15.1-web
+READ_ME.txt
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

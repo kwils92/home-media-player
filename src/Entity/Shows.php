@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 /**
  * Shows
@@ -66,25 +67,38 @@ class Shows
     }
 
     /**
-     * This function retrieves show and episode from the OMDBapi
-     * @return $movieDetails Returns API response data as an array  
+     * This function retrieves show and episode from the OMDBapi. It caches the result permanently using Cache Contracts
+     * https://symfony.com/doc/current/components/cache.html#cache-contracts
+     * 
+     * @return $cachedMovieDetails Returns API response data as an array  
      */
     public function getShowDetails(): ?array
     {
-        $apiKey = $_ENV['API_KEY'];
-        $client = HttpClient::create();
+        $cache = new FileSystemAdapter(); 
 
-        $response = $client->request(
-            'GET',
-            "http://www.omdbapi.com/?apikey={$apiKey}&t={$this->title}"
-        );
+        $cachedShowDetails = $cache->get('hdc-' . $this->id, function () {
+            $apiKey = $_ENV['API_KEY'];
+            $client = HttpClient::create();
 
-        if(array_key_exists('Error', $response->toArray())){
-            $movieDetails = array('Plot' => "Unable to retrieve movie details from OMDBapi.", "Rated" => "No rating available", "Genre" => "Unavailable", "Year" => "Year unavailable");
-        } else {
-            $movieDetails = $response->toArray(); 
-        }
+            $response = $client->request(
+                'GET',
+                "http://www.omdbapi.com/?apikey={$apiKey}&t={$this->title}"
+            );
+    
+            if(array_key_exists('Error', $response->toArray())){
+                $showDetails = array(
+                    "Plot" => "Unable to retrieve movie details from OMDBapi.", 
+                    "Rated" => "No rating available", 
+                    "Genre" => "Unavailable", 
+                    "Year" => "Year unavailable"
+                );
+            } else {
+                $showDetails = $response->toArray(); 
+            }
+    
+            return $showDetails;
+        }); 
 
-        return $movieDetails;
+        return $cachedShowDetails;
     }
 }
