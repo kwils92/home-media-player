@@ -9,13 +9,17 @@
     <div class="l-episode-nav">
         {# Links between the Episodes #}
         {% if prev_episode != null %}
-            <a class="c-back-link m-remove-underline m-blink-shadow-colour__text" href="{{ path('show_episodes_show', {'id': prev_episode.id}) }}"><< Previous Episode</a>
+            <a class="c-back-link m-remove-underline m-blink-shadow-colour__text" href="{{ path('show_episodes_show', {'id': prev_episode.id}) }}">
+                <i class="fas fa-angle-double-left"></i> Previous Episode
+            </a>
         {% endif %}
 
         <a class="c-back-link m-remove-underline m-blink-shadow-colour__text" href="{{ path('shows_show', {'id': show_episode.showTitle.id}) }}"> Back to Episodes</a>
 
         {% if next_episode != null %}
-            <a id="next-episode" class="c-back-link m-remove-underline m-blink-shadow-colour__text" href="{{ path('show_episodes_show', {'id': next_episode.id}) }}"> Next Episode >></a>
+            <a id="next-episode" class="c-back-link m-remove-underline m-blink-shadow-colour__text" href="{{ path('show_episodes_show', {'id': next_episode.id}) }}"> 
+                Next Episode <i class="fas fa-angle-double-right"></i>
+            </a>
         {% endif %}
     </div>
 
